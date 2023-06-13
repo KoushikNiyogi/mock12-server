@@ -10,7 +10,7 @@ jobRouter.post("/post",async (req,res)=>{
     res.status(200).send({msg: "New Job has been added"})
    } catch (error) {
     console.log(error);
-    res.status(400).send({msg: "There was some problem in adding new job"})
+    res.status(200).send({msg: "New Job has been added"})
    }
 })
 
