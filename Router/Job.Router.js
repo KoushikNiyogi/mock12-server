@@ -30,7 +30,8 @@ jobRouter.get("/get",async (req,res)=>{
  })
 
  jobRouter.get("/getbyrole",async (req,res)=>{
-    let {role,page} = req.params;
+    let {role,page} = req.query;
+    console.log(req.query);
     try {
      
 
@@ -45,11 +46,12 @@ jobRouter.get("/get",async (req,res)=>{
  
 
  jobRouter.get("/getbysort",async (req,res)=>{
-    let {sort,page} = req.params;
+    let {sort,page} = req.query;
+    console.log(req.query);
     try {
      
 
-     let produtsPage = await JobModel.find({}).limit(10).skip((page-1)*10).sort({postedAt:sort});
+     let produtsPage = await JobModel.find({}).limit(10).skip((+page-1)*10).sort({postedAt:+sort});
      let productCount =  produtsPage.length;
      res.status(200).send({data: {produtsPage,productCount}})
     } catch (error) {
@@ -59,7 +61,7 @@ jobRouter.get("/get",async (req,res)=>{
  })
 
  jobRouter.get("/getbysearch",async (req,res)=>{
-    let {search,page} = req.params;
+    let {search,page} = req.query;
     try {
     
 
