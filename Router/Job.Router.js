@@ -16,6 +16,7 @@ jobRouter.post("/post",async (req,res)=>{
 
 jobRouter.get("/get",async (req,res)=>{
     let {page} = req.body;
+    console.log(req.params);
     try {
      let Total_products =  await JobModel.find({});
      let productCount =  Total_products.length;
@@ -29,7 +30,7 @@ jobRouter.get("/get",async (req,res)=>{
  })
 
  jobRouter.get("/getbyrole",async (req,res)=>{
-    let {role,page} = req.body;
+    let {role,page} = req.params;
     try {
      
 
@@ -44,7 +45,7 @@ jobRouter.get("/get",async (req,res)=>{
  
 
  jobRouter.get("/getbysort",async (req,res)=>{
-    let {sort,page} = req.body;
+    let {sort,page} = req.params;
     try {
      
 
@@ -58,7 +59,7 @@ jobRouter.get("/get",async (req,res)=>{
  })
 
  jobRouter.get("/getbysearch",async (req,res)=>{
-    let {search,page} = req.body;
+    let {search,page} = req.params;
     try {
     
 
